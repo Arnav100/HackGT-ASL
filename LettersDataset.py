@@ -22,10 +22,10 @@ trainloader = torch.utils.data.DataLoader(
 #     testpath, transform=transforms.ToTensor())
 testloader = torch.utils.data.DataLoader(
     testset, batch_size=32, shuffle=True)
-print(trainset.dataset.class_to_idx)
-print(testset.dataset.class_to_idx)
+# print(trainset.dataset.class_to_idx)
+# print(testset.dataset.class_to_idx)
 # for images, labels in trainloader:
 #     print(labels)
-#     plt.imshow(np.transpose(images[0].numpy(), (1, 2, 0)))
-#     plt.show()
+#     print(images.size())
+    
 #     break
