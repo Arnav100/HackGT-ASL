@@ -10,9 +10,14 @@ import torchvision.transforms as transforms
 from LettersDataset import testset
 import matplotlib.pyplot as plt
 
+<<<<<<< HEAD
 classes = list(testset.datagset.class_to_idx.keys())
 text = ""
 last_char = ''
+=======
+
+classes = list(testset.dataset.class_to_idx.keys())
+>>>>>>> 7923db3 (stuff)
 
 
 def process_hand(img, left_most, right_most, bottom_most, top_most):
@@ -51,8 +56,8 @@ def process_hand(img, left_most, right_most, bottom_most, top_most):
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Resize(100)])
     batch = transform(cropped).unsqueeze(0)
-    plt.imshow(np.transpose(batch[0].numpy(), (1, 2, 0)))
-    plt.show()
+    # plt.imshow(np.transpose(batch[0].numpy(), (1, 2, 0)))
+    # plt.show()
     # print(batch.size())
     with torch.no_grad():
         outputs = net(batch)
@@ -137,3 +142,4 @@ while True:
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
+
