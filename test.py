@@ -1,12 +1,9 @@
 from model import Net
 import torch
-from LettersDataset import testloader
+from LettersDataset import testloader, testset
 
 
-classes = [c for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
-classes.append("space")
-classes.append("del")
-classes.append("nothing")
+classes = list(testset.dataset.class_to_idx.keys())
 
 
 def test(net, testloader):
@@ -32,15 +29,15 @@ def test(net, testloader):
         if total_pred[classname] != 0:
             accuracy = 100 * float(correct_count) / total_pred[classname]
             print(f'Accuracy for class: {classname:5s} is {accuracy:.1f} %')
-            print(correct_count)
-            print(total_pred[classname])
+            # print(correct_count)
+            # print(total_pred[classname])
         else:
             print("No predictions for " + str(classname) +
                   ", should be " + str(correct_count))
 
 
 if __name__ == '__main__':
-    PATH = './asl_net.pth'
+    PATH = './asl_net_4.pth'
     net = Net()
     net.load_state_dict(torch.load(PATH))
     test(net, testloader=testloader)

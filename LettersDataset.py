@@ -1,7 +1,7 @@
 import torch
 from torchvision import datasets, transforms
-import matplotlib.pyplot as plt
-import numpy as np
+# import matplotlib.pyplot as plt
+# import numpy as np
 import torch.utils.data as dta
 
 
@@ -9,7 +9,7 @@ trainpath = "/Users/manvirchahal/Downloads/archive/asl_alphabet_train/asl_alphab
 testpath = "/Users/manvirchahal/Downloads/archive/asl_alphabet_test"
 
 trainset = datasets.ImageFolder(
-    trainpath, transform=transforms.ToTensor())
+    trainpath, transform=transforms.Compose([transforms.ToTensor(), transforms.Resize(100)]))
 testsize = int(len(trainset)*0.1)
 trainsize = int(len(trainset)*0.9)
 
@@ -26,6 +26,6 @@ print(trainset.dataset.class_to_idx)
 print(testset.dataset.class_to_idx)
 # for images, labels in trainloader:
 #     print(labels)
-#     # plt.imshow(np.transpose(images[0].numpy(), (1, 2, 0)))
-#     # plt.show()
+#     plt.imshow(np.transpose(images[0].numpy(), (1, 2, 0)))
+#     plt.show()
 #     break

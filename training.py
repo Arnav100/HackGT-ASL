@@ -35,12 +35,12 @@ def train(epochs, trainloader):
             if i % 200 == 199:    # print every 2000 mini-batches
                 print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 200:.3f}')
                 running_loss = 0.0
-
+        torch.save(net.state_dict(), './asl_net_' + str(epoch) + ".pth")
     print('Finished Training')
 
 
 if __name__ == '__main__':
-    epochs = 1
+    epochs = 5
     train(epochs, trainloader=trainloader)
     PATH = './asl_net.pth'
     torch.save(net.state_dict(), PATH)
