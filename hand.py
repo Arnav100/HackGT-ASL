@@ -11,6 +11,8 @@ from LettersDataset import testset
 import matplotlib.pyplot as plt
 
 classes = list(testset.datagset.class_to_idx.keys())
+text = ""
+last_char = ''
 
 
 def process_hand(img, left_most, right_most, bottom_most, top_most):
@@ -55,10 +57,19 @@ def process_hand(img, left_most, right_most, bottom_most, top_most):
     with torch.no_grad():
         outputs = net(batch)
         _, predictions = torch.max(outputs, 1)
-        print(classes[predictions[0]])
+        letter = classes[predictions[0]]
+        print(letter)
         height, width, _ = cropped.shape
-        cv2.putText(cropped, classes[predictions[0]], (width//2, height//2),
+        cv2.putText(cropped, letter, (width//2, height//2),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+
+        if letter != last_char:
+            if letter == 'space':
+                letter = ' '
+            if letter == 'del':
+                text = text[0:-1]
+            text = text + letter
+            print(text)
     cv2.imshow("cropped", cropped)
 
     # net.setInput(cropped)
