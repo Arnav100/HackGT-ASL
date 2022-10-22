@@ -37,7 +37,8 @@ def test(net, testloader):
 
 
 if __name__ == '__main__':
-    PATH = './asl_net_4.pth'
+    PATH = './asl_2_net_4.pth'
+    print(PATH)
     net = Net()
     net.load_state_dict(torch.load(PATH))
     test(net, testloader=testloader)
