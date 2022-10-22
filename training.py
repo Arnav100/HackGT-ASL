@@ -2,6 +2,7 @@
 import torch.optim as optim
 from model import Net
 import torch.nn as nn
+import torch
 from LettersDataset import trainloader
 
 net = Net()
@@ -38,3 +39,5 @@ def train(epochs, trainloader):
 if __name__ == '__main__':
   epochs = 2
   train(epochs, trainloader=trainloader)
+  PATH = './asl_net.pth'
+  torch.save(net.state_dict(), PATH)
