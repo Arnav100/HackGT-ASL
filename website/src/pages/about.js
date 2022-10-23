@@ -1,11 +1,9 @@
 import React from "react";
 import "./about.css";
-import CustomButton from "../components/CustomButton";
 import ASLToEnglish from "../components/ASL";
-import { useNavigate } from "react-router-dom";
-import Link from 'react-scroll';
 import { useRef } from 'react';
 import { Button } from 'react-bootstrap';
+import Cam from "../components/Cam";
 
 const Home = () => {
   const ref = useRef(null);
@@ -45,6 +43,8 @@ const Home = () => {
       <div ref={ref}>
         <ASLToEnglish id="ASLToEnglish" />
       </div>
+      <Cam/>
+      <div style = {{height: "155rem"}}/>
     </>
   );
 };

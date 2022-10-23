@@ -10,14 +10,8 @@ import torchvision.transforms as transforms
 from LettersDataset import testset
 import matplotlib.pyplot as plt
 
-<<<<<<< HEAD
-classes = list(testset.datagset.class_to_idx.keys())
-text = ""
-last_char = ''
-=======
 
 classes = list(testset.dataset.class_to_idx.keys())
->>>>>>> 7923db3 (stuff)
 
 
 def process_hand(img, left_most, right_most, bottom_most, top_most):
